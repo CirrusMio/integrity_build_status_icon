@@ -16,7 +16,6 @@ module IntegrityBuildStatusIcon
         last_modified = current_project.updated_at
       end
       file_path = Pathname.new(__FILE__).join("../../../icons/#{icon}")
-      puts "SENDING #{file_path.expand_path}"
       send_file file_path.expand_path, type: 'image/' + icon.split('.').last,
                 last_modified: last_modified
     end
