@@ -20,13 +20,15 @@ module IntegrityBuildStatusIcon
                 last_modified: last_modified
     end
 
-    def status_icon_for_build build
-      return pending_status_icon unless build.completed?
-      build.successful ? 'status_passing.png' : 'status_failing.png'
+    def status_icon_map
+      {building: 'clock.gif',
+       pending: 'tetris.gif',
+       success: 'status_passing.png',
+       failed: 'status_failing.png'}
     end
 
-    def pending_status_icon
-      ['clock', 'tetris'].sample + '.gif'
+    def status_icon_for_build build
+      status_icon_map[build.status]
     end
   end
 end
