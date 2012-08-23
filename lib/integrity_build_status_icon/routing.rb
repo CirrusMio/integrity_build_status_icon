@@ -21,8 +21,8 @@ module IntegrityBuildStatusIcon
     end
 
     def status_icon_for_build build
-      return pending_status_icon unless last_build.completed_at
-      last_build.successful ? 'status_passing.png' : 'status_failing.png'
+      return pending_status_icon unless build.completed?
+      build.successful ? 'status_passing.png' : 'status_failing.png'
     end
 
     def pending_status_icon
